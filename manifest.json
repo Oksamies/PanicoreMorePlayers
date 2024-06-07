@@ -1,9 +1,9 @@
 {
     "name": "MorePlayers",
-    "version_number": "0.0.2",
+    "version_number": "0.0.3",
     "author": "Oksamies",
     "website_url": "https://github.com/Oksamies/PanicoreMorePlayers",
-    "description": "Increases the maximum player limit to 20",
+    "description": "Increases the maximum player limit to 100",
     "dependencies": [
         "Thunderstore-unreal_shimloader-1.0.6"
     ]

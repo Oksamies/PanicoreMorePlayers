@@ -1,16 +1,26 @@
-local not_hooked = true
-RegisterHook("/Script/UMG.Widget:SetFocus", function (Context)
-    if not_hooked then
-        print("MorePlayers: Hooked!")
-        NotifyOnNewObject("/Game/MenuSystemPro/ExampleContent/Designs/Design_Silence/Widgets/Settings/WBP_Slider_Silence.WBP_Slider_Silence_C", function(slider)
-            if tostring(slider:GetFullName()):sub(-#"MaxPlayerCountSlider") == "MaxPlayerCountSlider" then
-                print("MorePlayers: MaxPlayerCountSlider created, waiting for it to initialize")
-                ExecuteWithDelay(1000, function()
-                    slider.SliderMaxValue = 20.000000
-                    print(string.format("MorePlayers: Max player count set to: %s\n", tostring(slider:GetPropertyValue("SliderMaxValue"))))
-                end)
+LoopAsync(2000, function()
+    local menus = FindAllOf("WBP_HostMultiplayerMenu_Silence_C")
+    if menus then
+        for Index, menu in pairs(menus) do
+            if not (tostring(menu:GetPropertyValue("MaxPlayerCountSlider").SliderMaxValue) == "100.0") then
+                menu:GetPropertyValue("MaxPlayerCountSlider").SliderMaxValue = 100.000000
+                print("Set max players to 100")
             end
-        end)
-        not_hooked = false
+        end
     end
+    return false -- Loops forever
+end)
+
+
+RegisterHook("/Script/Engine.PlayerController:ClientRestart", function (Context)
+
+    LoopAsync(2000, function()
+        local players = FindAllOf("PS_Lobby_C")
+        if players then
+            for Index, player in pairs(players) do
+                player.Ready = true
+            end
+        end
+        return false -- Loops forever
+    end)
 end)
