@@ -1,0 +1,10 @@
+{
+    "name": "MorePlayers",
+    "version_number": "0.0.1",
+    "author": "Oksamies",
+    "website_url": "",
+    "description": "Increases the maximum player limit to 20",
+    "dependencies": [
+        "Thunderstore-unreal_shimloader-1.0.6"
+    ]
+}
