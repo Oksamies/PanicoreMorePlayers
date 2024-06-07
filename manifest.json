@@ -1,6 +1,6 @@
 {
     "name": "MorePlayers",
-    "version_number": "0.0.1",
+    "version_number": "0.0.2",
     "author": "Oksamies",
     "website_url": "https://github.com/Oksamies/PanicoreMorePlayers",
     "description": "Increases the maximum player limit to 20",
